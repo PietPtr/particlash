@@ -21,16 +21,17 @@ YPAD = 128
 #         masses.append(Mass(np.array([XPAD / 2 + x * XPAD, YPAD / 2 + y * YPAD]),\
 #             np.array([0.0, 0.0]), 10))
 #
-masses.append(Mass(np.array([100.0, 110.0]), np.array([20.0, 0.0]), 10))
-masses.append(Mass(np.array([200.0, 100.0]), np.array([0.0, 0.0]), 10))
-# masses.append(Mass(np.array([120.0, 200.0]), np.array([0.0, 0.0]), 10))
-# masses.append(Mass(np.array([230.0, 200.0]), np.array([0.0, 0.0]), 10))
+masses.append(Mass(np.array([100.0, 145.0]), np.array([50.0, 0.0]), 30))
+masses.append(Mass(np.array([200.0, 100.0]), np.array([-10.0, 0.0]), 30))
+
+# masses.append(Mass(np.array([150.0, 100.0]), np.array([100, 0.0]), 10))
+# masses.append(Mass(np.array([200.0, 200.0]), np.array([0.0, -200.0]), 10))
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
 
-    dt = clock.tick(20) / 1000.0
+    dt = clock.tick() / 1000.0
 
     """
     Updates and logic
@@ -39,7 +40,7 @@ while True:
         mass.update(dt, masses)
 
     for mass in masses:
-        mass.update_collisions(dt, masses)
+        mass.apply_move(dt)
 
     """
     Drawing
