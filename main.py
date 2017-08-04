@@ -14,24 +14,27 @@ clock = pygame.time.Clock()
 
 masses = []
 
-XPAD = 128
-YPAD = 128
-# for x in range(0, int(width / XPAD)):
-#     for y in range(0, int(height / YPAD)):
-#         masses.append(Mass(np.array([XPAD / 2 + x * XPAD, YPAD / 2 + y * YPAD]),\
-#             np.array([0.0, 0.0]), 10))
+XPAD = 256
+YPAD = 256
+for x in range(0, int(width / XPAD)):
+    for y in range(0, int(height / YPAD)):
+        masses.append(Mass(np.array([XPAD / 2 + x * XPAD, YPAD / 2 + y * YPAD]),\
+            np.array([0.0, 0.0]), 30))
 #
-masses.append(Mass(np.array([100.0, 145.0]), np.array([50.0, 0.0]), 30))
-masses.append(Mass(np.array([200.0, 100.0]), np.array([-10.0, 0.0]), 30))
+# masses.append(Mass(np.array([100.0, 100.0]), np.array([0.0, 0.0]), 10))
+# masses.append(Mass(np.array([200.0, 100.0]), np.array([0.0, 0.0]), 10))
+# masses.append(Mass(np.array([200.0, 200.0]), np.array([0.0, 0.0]), 10))
 
 # masses.append(Mass(np.array([150.0, 100.0]), np.array([100, 0.0]), 10))
 # masses.append(Mass(np.array([200.0, 200.0]), np.array([0.0, -200.0]), 10))
+
+view = [0, 0]
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
 
-    dt = clock.tick() / 1000.0
+    dt = clock.tick(60) / 1000.0
 
     """
     Updates and logic
@@ -48,6 +51,6 @@ while True:
     screen.fill(black)
 
     for mass in masses:
-        mass.draw(screen)
+        mass.draw(screen, view)
 
     pygame.display.flip()
