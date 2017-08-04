@@ -15,7 +15,7 @@ clock = pygame.time.Clock()
 
 masses = []
 
-preset = "gas"
+preset = "lagrange"
 
 if preset == "gas":
     XPAD = 200
@@ -25,6 +25,7 @@ if preset == "gas":
         for y in range(0, int(height / YPAD)):
             masses.append(Mass(np.array([XPAD / 2 + x * XPAD, YPAD / 2 + y * YPAD]),\
                 np.array([r.uniform(-MINMAX, MINMAX), r.uniform(-MINMAX, MINMAX)]), 10))
+
 elif preset == "three":
     masses.append(Mass(np.array([500.0, 300.0]), np.array([0.0, 0.0]), 20))
     masses.append(Mass(np.array([630.0, 300.0]), np.array([0.0, 0.0]), 20))
@@ -33,7 +34,7 @@ elif preset == "lagrange":
     masses.append(Mass(np.array([367.0, 456.0]), np.array([39.5, -148.3]), 1))
     masses.append(Mass(np.array([500.0, 350.0]), np.array([150.0, 0.0]), 10))
     masses.append(Mass(np.array([500.0, 500.0]), np.array([0.0, 0.0]), 50))
-elif preset == "quadrupel":
+elif preset == "quad":
     SPEED = 122
     masses.append(Mass(np.array([500.0, 300.0]), np.array([-SPEED, 0.0]), 50))
     masses.append(Mass(np.array([300.0, 500.0]), np.array([0.0, SPEED]), 50))
@@ -42,6 +43,9 @@ elif preset == "quadrupel":
 elif preset == "world":
     masses.append(Mass(np.array([500.0, 300.0]), np.array([55.0, 0.0]), 5))
     masses.append(Mass(np.array([500.0, 500.0]), np.array([0.0, 0.0]), 100))
+elif preset == "impulse":
+    masses.append(Mass(np.array([500.0, 500.0]), np.array([0.0, 0.0]), 100))
+    masses.append(Mass(np.array([100.0, 540.0]), np.array([1000.0, 0.0]), 10))
 
 view = [0, 0]
 zoom = 1

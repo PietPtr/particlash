@@ -5,7 +5,7 @@ from util import log
 
 DENSITY = 1
 HISTORY = True
-GRAVITY = False
+GRAVITY = True
 
 class Mass(object):
     def __init__(self, pos, vel, size):
@@ -96,9 +96,9 @@ class Mass(object):
         color = (247, 238, 195)
 
         if HISTORY:
-            if frame % 10 == 0:
+            if frame % 3 == 0:
                 self.history.append(self.pos.tolist())
-                if len(self.history) > 50:
+                if len(self.history) > 100:
                     del self.history[0]
 
             if len(self.history) >= 2 and draw_history:
